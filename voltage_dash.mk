@@ -15,7 +15,7 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Device identifier.
 PRODUCT_DEVICE := dash
-PRODUCT_NAME := lineage_dash
+PRODUCT_NAME := voltage_dash
 PRODUCT_BRAND := POCO
 PRODUCT_MODEL := 2602BPC18G
 PRODUCT_MANUFACTURER := Xiaomi
