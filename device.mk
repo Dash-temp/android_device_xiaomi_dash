@@ -402,6 +402,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/lineage/interfaces/power-libperfmgr \
     hardware/mediatek \
     hardware/mediatek/libmtkperf_client \
+    hardware/mediatek/wlan/wifi_hal \
     hardware/xiaomi
 
 # Sensors
@@ -457,8 +458,6 @@ PRODUCT_PACKAGES += \
     vndservicemanager
 
 # Wifi
-$(call soong_config_set_bool,mediatek_wifi_hal,use_pre_baklava_qpr0_struct,true)
-
 # The physical-device wpa_supplicant build uses the MTK handler compiled
 # into external/wpa_supplicant_8. Disable the stub library so
 # driver_nl80211.c installs the .driver_cmd operation; the source tree also
@@ -468,9 +467,9 @@ $(call soong_config_set_bool,wpa_supplicant_8,wpa_supplicant_use_stub_lib,false)
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
     hostapd \
-    libwifi-hal-wrapper \
     wlan_assistant \
-    wpa_supplicant
+    wpa_supplicant \
+    wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
