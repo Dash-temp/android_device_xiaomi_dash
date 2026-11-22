@@ -132,15 +132,15 @@ def blob_fixup_displayconfig(
     )
 
     hbm_anchor = '    </highBrightnessMode>\n'
-    ramp_anchor = '    <ambientLightHorizonLong>1500</ambientLightHorizonLong>\n'
-    threshold_anchor = '    <ambientLightHorizonShort>1000</ambientLightHorizonShort>\n'
+    ramp_anchor = '    <ambientLightHorizonLong>10000</ambientLightHorizonLong>\n'
+    threshold_anchor = '    <ambientLightHorizonShort>2000</ambientLightHorizonShort>\n'
 
     if hbm_anchor in data and '<defaultRefreshRate>' not in data:
         data = data.replace(hbm_anchor, hbm_anchor + refresh_rate, 1)
-    if ramp_anchor in data and 'screenBrightnessRampFastDecrease' not in data:
-        data = data.replace(ramp_anchor, ramps + ramp_anchor, 1)
-    if threshold_anchor in data and 'ambientBrightnessChangeThresholds' not in data:
-        data = data.replace(threshold_anchor, threshold_anchor + thresholds, 1)
+    if ramp_anchor.replace('10000', '1500') in data and 'screenBrightnessRampFastDecrease' not in data:
+        data = data.replace(ramp_anchor.replace('10000', '1500'), ramps + ramp_anchor, 1)
+    if threshold_anchor.replace('2000', '1000') in data and 'ambientBrightnessChangeThresholds' not in data:
+        data = data.replace(threshold_anchor.replace('2000', '1000'), threshold_anchor + thresholds, 1)
 
     with open(file_path, 'w') as f:
         f.write(data)
